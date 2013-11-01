@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-
+<h1>Doi</h1>
 <table>
 	<tr>
 		<th>Name:</th>
@@ -10,10 +10,11 @@
 	</tr>
 	<td><%= @doi.name %></td>
 	<td><%= @doi.description %></td>
-	<td><%= link_to 'Edit', edit_doi_path(@doi) %></td>
-	<td><%= link_to 'Back', dois_path %></td>
-
-</table>
+	<% if current_user.id == @doi.user_id %>
+    <td><%= link_to 'Edit', edit_doi_path(@doi) %></td>
+	  <td><%= link_to 'Back', dois_path %></td>
+  <% end %>
+</table>  
 
 
 
@@ -44,9 +45,11 @@
       <tr>
         <td><%= url.url %></td>
         <td><%= url.doi_id %></td>
-        <td><%= link_to 'Show', doi_url(url) %></td>
-        <td><%= link_to 'Edit', edit_doi_url(url) %></td>
-        <td class="alert"><%= link_to 'Destroy', doi_url, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if current_user.id == @doi.user_id %>
+          <td><%= link_to 'Show', doi_url(url) %></td>
+          <td><%= link_to 'Edit', edit_doi_url(url) %></td>
+          <td class="alert"><%= link_to 'Destroy', doi_url, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
