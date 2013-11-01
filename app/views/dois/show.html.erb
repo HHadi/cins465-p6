@@ -5,9 +5,14 @@
 	<tr>
 		<th>Name:</th>
 		<th>Description:</th>
+		<th></th>
+		<th></th>
 	</tr>
 	<td><%= @doi.name %></td>
 	<td><%= @doi.description %></td>
+	<td><%= link_to 'Edit', edit_doi_path(@doi) %></td>
+	<td><%= link_to 'Back', dois_path %></td>
+
 </table>
 
 
@@ -17,15 +22,12 @@
   <strong>User:</strong>
   <%= @doi.user_id %>
 </p> -->
-<%= link_to 'Create URL', new_doi_url_path(:doi_id => @doi.id) %> |
 
-<%= link_to 'Edit', edit_doi_path(@doi) %> |
-<%= link_to 'Back', dois_path %>
-<br>
-<br>
 
-<h1>Listing urls</h1>
 
+
+<h1>Urls List</h1>
+<%= link_to 'Create URL', new_doi_url_path(:doi_id => @doi.id)  , class: "button radius"%>
 <table>
   <thead>
     <tr>
@@ -44,7 +46,31 @@
         <td><%= url.doi_id %></td>
         <td><%= link_to 'Show', doi_url(url) %></td>
         <td><%= link_to 'Edit', edit_doi_url(url) %></td>
-        <td><%= link_to 'Destroy', doi_url, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td class="alert"><%= link_to 'Destroy', doi_url, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+
+<h1>Listing reviews</h1>
+<%= link_to 'Add Review', new_doi_review_path(:doi_id => @doi.id)  , class: "button radius"%>
+<table>
+  <thead>
+    <tr>
+      <th>Comment</th>
+      <th>User</th>
+      <th>Doi</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @doi.reviews.each do |review| %>
+      <tr>
+        <td><%= review.comment %></td>
+        <td><%= review.user_id %></td>
+        <td><%= review.doi_id %></td>
       </tr>
     <% end %>
   </tbody>

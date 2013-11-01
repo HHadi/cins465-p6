@@ -10,25 +10,27 @@ class ReviewsController < ApplicationController
   # GET /reviews/1
   # GET /reviews/1.json
   def show
+    @review = @doi.reviews.find(params[:id])
   end
 
   # GET /reviews/new
   def new
-    @review = Review.new
+    @review = @doi.reviews.build
   end
 
   # GET /reviews/1/edit
   def edit
+    @review = @doi.review.find(params[:id])
   end
 
   # POST /reviews
   # POST /reviews.json
   def create
-    @review = Review.new(review_params)
+    @review = @doi.reviews.build(review_params)
 
     respond_to do |format|
       if @review.save
-        format.html { redirect_to @review, notice: 'Review was successfully created.' }
+        format.html { redirect_to @doi, notice: 'Review was successfully created.' }
         format.json { render action: 'show', status: :created, location: @review }
       else
         format.html { render action: 'new' }
