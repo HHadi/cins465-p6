@@ -1,0 +1,55 @@
+<h1>Home#index</h1>
+<p>Find me in app/views/home/index.html.erb</p>
+
+
+<!-- Search for a doi.  in the home controller, function looks for matching doi id -->
+<%= form_tag dois_path, :method => :get do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search" , class: "button radius" %>
+  </p>
+<% end %>
+
+
+
+<!-- allow user to serach for a doi, sign in or sign up
+
+look update shows the most recent url only
+
+
+homepage
+
+profile page cant display if you are not signed in
+
+controller for profile 
+profile_controller.rb
+
+rails g controller home index
+def index 
+  
+  def query
+
+
+home/index.html.erb
+form_tag 
+if doi == nil
+
+
+
+rails g controller profile show
+
+get 'profile', to: 'profile#show'
+
+
+
+show 
+@user = current user
+
+
+profile
+create a new doi
+
+fill the form
+when hit submit take tha hash of doi to create 
+
+rand= you can use doi id -->

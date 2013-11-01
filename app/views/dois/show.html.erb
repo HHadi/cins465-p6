@@ -1,0 +1,53 @@
+<p id="notice"><%= notice %></p>
+
+
+<table>
+	<tr>
+		<th>Name:</th>
+		<th>Description:</th>
+	</tr>
+	<td><%= @doi.name %></td>
+	<td><%= @doi.description %></td>
+</table>
+
+
+
+
+<!-- <p>
+  <strong>User:</strong>
+  <%= @doi.user_id %>
+</p> -->
+<%= link_to 'Create URL', new_doi_url_path(:doi_id => @doi.id) %> |
+
+<%= link_to 'Edit', edit_doi_path(@doi) %> |
+<%= link_to 'Back', dois_path %>
+<br>
+<br>
+
+<h1>Listing urls</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Url</th>
+      <th>Doi</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @doi.urls.each do |url| %>
+      <tr>
+        <td><%= url.url %></td>
+        <td><%= url.doi_id %></td>
+        <td><%= link_to 'Show', doi_url(url) %></td>
+        <td><%= link_to 'Edit', edit_doi_url(url) %></td>
+        <td><%= link_to 'Destroy', doi_url, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
