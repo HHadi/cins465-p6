@@ -6,9 +6,9 @@ class HomeController < ApplicationController
   def search
   	doi = Doi.id 
   	if doi == nill
-  		redirect_to 'dois#index' , alert: "Something serious happened"
+  		redirect_to 'home#index' , alert: "No such a Doi"
   	else
-  		redirect_to 'home#index', alert: "good job"
+  		redirect_to 'doi#show', alert: "Found"
   	end
   end
 
