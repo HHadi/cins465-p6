@@ -16,5 +16,3 @@ doi = Doi.create([{name: "my first doi dddd", description: "hello ddd"},
 url = Url.create([{url: "first url"},
 				  {url: "second url"}])
 
-review = Review.create([{review: "first review"},
-				        {review: "second review"}])
